@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>K-NEX order</title>
+    <link rel="stylesheet" href="knex.css">
+</head>
+<header class="top-bar">
+  <div class="logo">K-NEX<sub>.tech</sub></div>
+  <div class="nav-links">
+    <button onclick="window.location.href = 'knex.html'" style="padding:6px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-undo-2 preview-icon"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></svg>&nbspBack</button>
+  </div>
+</header>
+<br/><br/><br/><br/>
+<body>
+    <!-- PAYMENT PROCESS -->
+<div class="card">
+  <div class="payment-title">Payment Process</div>
+  <div class="step"><div class="number">1</div><div class="step-text">Select your preferred product.</div></div>
+  <div class="step"><div class="number">2</div><div class="step-text">Place your order.</div></div>
+  <div class="step"><div class="number">3</div><div class="step-text">Choose your preferred payment method.</div></div>
+  <div class="step"><div class="number">4</div><div class="step-text">Complete your payment.</div></div>
+  <div class="step"><div class="number">5</div><div class="step-text">Receive your order confirmation.</div></div>
+  <p>
+      𝐘𝐨𝐮𝐫 𝐬𝐚𝐭𝐢𝐬𝐟𝐚𝐜𝐭𝐢𝐨𝐧 𝐚𝐧𝐝 𝐬𝐞𝐜𝐮𝐫𝐢𝐭𝐲 𝐚𝐫𝐞 𝐨𝐮𝐫 𝐩𝐫𝐢𝐨𝐫𝐢𝐭𝐲.
+  </p>
+  <br/>
+  <p>
+𝐊-𝐍𝐄𝐗 — 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐲 𝐖𝐢𝐭𝐡𝐨𝐮𝐭 𝐋𝐢𝐦𝐢𝐭𝐬. 
+  </p>
+</div>
+<div class="cady"></div>
+    <div class="card">
+    <h1>K-NEX Product List</h1>
+<div id="productList"></div>
+ </div>
+ <br/>
+<div class="cady">
+<!-- CART + CHECKOUT FORM -->
+<div id="cartBox">
+  <h3>Your Cart</h3>
+  <div id="cartItems"></div>
+  <hr>
+  <h3>Checkout Details</h3>
+  <input type="text" id="custName" placeholder="Your Full Name *" required>
+  <input type="tel" id="custPhone" placeholder="Your Phone Number *" required>
+  <input type="text" id="custAddress" rows="2" placeholder="Your Delivery Location"></input>
+<div class="cardy">
+  <h3>Choose Payment Method</h3>
+  <label class="pay-option"><input type="radio" name="payment" value="Bank Transfer" checked> 🏦 Bank Transfer</label>
+  <label class="pay-option"><input type="radio" name="payment" value="Cash on Delivery"> 💵 Cash on Delivery</label>
+  <label class="pay-option"><input type="radio" name="payment" value="POS / Card on Delivery"> 💳 POS / Card on Delivery</label>
+  <label class="pay-option"><input type="radio" name="payment" value="Opay / Palmpay Transfer"> 📱 Opay / Palmpay Transfer</label>
+  </div>
+
+  <button class="checkout-btn" onclick="sendToWhatsApp()">Send Order to WhatsApp ✅</button>
+</div>
+</div>
+<div class="cady"></div>
+     <div class="cardy">
+         <h1>
+             Thank you for visiting our website and patronising us.
+         </h1>
+         <br/>
+         <sub> developed by <span><a href="https://davidolise-port.vercel.app" style="color:#8083ff;">DAVID. O. IFE</a></span></sub>
+     </div>
+<br/>
+<div class="cady"></div>
+
+<footer class="foot-bar">
+         <div class="btn">
+  <!-- The Switch -->
+  <label class="switch">
+    <input type="checkbox" id="theme-toggle" onchange="toggleTheme()">
+    <span class="slider"></span>
+  </label>
+  <span id="theme-label">🌙</span>
+  </div>
+  <button id="cartBtn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
+  </footer>
+  
+<script>
+    const products = [
+  { id: 1, name: "Laptop" },
+  { id: 2, name: "Smartphone" },
+  { id: 3, name: "Earbuds" },
+  { id: 4, name: "Smartwatch" },
+  { id: 5, name: "Phone accessories" },
+  { id: 6, name: "Game accessories" },
+  { id: 7, name: "Laptop accessories" }, 
+];
+
+let cart = [];
+const list = document.getElementById('productList');
+products.forEach(p => {
+  list.innerHTML += `
+    <div class="product">
+      <div><b>${p.name}</b></div>
+      <button onclick="addToCart(${p.id})">Add to Cart</button>
+    </div>
+  `;
+});
+
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  const found = cart.find(item => item.id === id);
+  if (found) { found.qty++; } else { cart.push({...product, qty: 1}); }
+  updateCart();
+  document.getElementById('cartBox').style.display = 'block';
+}
+
+function updateCart() {
+  let count = 0, html = "";
+  cart.forEach(item => {
+    count += item.qty;
+    html += `<p>${item.name} x ${item.qty} <button onclick="removeItem(${item.id})">remove</button></p>`;
+  });
+  document.getElementById('cartCount').innerText = count;
+  document.getElementById('cartItems').innerHTML = html || "Cart is empty";
+}
+
+function removeItem(id) {
+  cart = cart.filter(item => item.id !== id);
+  updateCart();
+}
+
+function toggleCart() {
+  const box = document.getElementById('cartBox');
+  box.style.display = box.style.display === 'block' ? 'none' : 'block';
+}
+
+function sendToWhatsApp() {
+  if (cart.length === 0) { alert("Cart is empty"); return; }
+
+  const name = document.getElementById('custName').value.trim();
+  const phone = document.getElementById('custPhone').value.trim();
+  const address = document.getElementById('custAddress').value.trim();
+  const payment = document.querySelector('input[name="payment"]:checked').value;
+
+  if (!name || !phone) { alert("Please enter your Name and Phone Number"); return; }
+
+  const myPhone = "2349133375057"; // CHANGE TO YOUR WHATSAPP NUMBER
+
+  let message = `*NEW ORDER - K-NEX*%0A%0A`;
+  message += `*Name:* ${name}%0A`;
+  message += `*Phone:* ${phone}%0A`;
+  message += `*Address:* ${address || 'Not provided'}%0A%0A`;
+  message += `*Products:*%0A`;
+  cart.forEach(item => {
+    message += `• ${item.name} x ${item.qty}%0A`;
+  });
+  message += `%0A*Payment Method:* ${payment}%0A`;
+  message += `%0A Please confirm availability and total price. Thank you!`;
+
+  window.open(`https://wa.me/${myPhone}?text=${message}`, '_blank');
+}
+</script>
+<script type="text/javascript" src="knex.js"></script>
+</body>
+</html>
