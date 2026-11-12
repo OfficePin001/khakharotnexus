@@ -7,6 +7,7 @@
 :root{
     --bg: #050505;
     --bar: #A2A1A0;
+    --bar-line:rgba( 208,205,199,0.8) ;
     --glass: #D0CDC7;
     --pal: #BC795A;
     --char: #242423;
@@ -19,6 +20,7 @@
 /*For the light theme*/
 body.dark {
     --bg: #FFFFFF;
+    --bar-line: rgba(174, 73, 87, 0.8);
     --card: #1E293B;
     --text: #000;
     --invt:#fff;
@@ -80,7 +82,7 @@ body{
     left: 0px;
     right: 0px;
     padding: 10px 0.8%;
-    border-bottom: 3px solid rgba( 208,205,199,0.8);
+    border-bottom: 3px solid var(--bar-line);
     backdrop-filter:blur(25px);
     display: flex;
     justify-content: space-between;
@@ -180,7 +182,7 @@ body{
     left: 0px;
     right: 0px;
     padding: 10px 2%;
-    border-top: 3px solid rgba( 208,205,199,0.8);
+    border-top: 3px solid var(--bar-line);
     backdrop-filter:blur(25px);
     display: flex;
     justify-content: space-between;
@@ -198,27 +200,148 @@ body{
 
 
 
-h1 { text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; font-size: 22px; }
-  .product { background: var(--char); padding: 15px; margin-bottom: 10px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; }
-  button { background: var(--lg); color: var(--invt); border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; }
-  #cartBtn { position: relative; bottom: 0px; right: 0px; background: var(--lg); color: var(--invt); padding: 15px 20px; font-size: 16px; z-index: 100; }
-  #cartBox { display: none; background: var(--char); padding: 20px; border-radius: 15px; margin-top: 20px; }
-  input, textarea { background: var(--char); color: var(--invt); width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 15px; }
-  .pay-option { background: var(--text); color: var(--invt); padding: 12px; border-radius: 10px; margin: 8px 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: bold; }
-  .pay-option input { width: auto; margin: 0; }
-  .checkout-btn { background: var(--lg); color: var(--invt); width: 100%; padding: 15px; font-size: 16px; font-weight: bold; margin-top: 10px; }
+h1 { 
+    text-align: center; 
+    font-family: Georgia , serif; 
+    font-weight: 900; 
+    text-transform: uppercase; 
+    font-size: 22px; 
+}
+.product { 
+    background: var(--char); 
+    padding: 15px; 
+    margin-bottom: 10px; 
+    border-radius: 10px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+button { 
+    background: var(--lg); 
+    color: var(--invt); 
+    border: none; 
+    padding: 10px 15px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+}
+#cartBtn { 
+    position: relative; 
+    bottom: 0px; 
+    right: 0px; 
+    background: var(--lg); 
+    color: var(--invt); 
+    padding: 15px 20px; 
+    font-size: 16px; 
+    z-index: 100; 
+}
+#cartBox { 
+    display: none; 
+    background: var(--char); 
+    padding: 20px; 
+    border-radius: 15px; 
+    margin-top: 20px; 
+}
+input { 
+    background: var(--char); 
+    color: var(--invt); 
+    width: 100%;
+    padding: 12px; 
+    margin: 8px 0; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    box-sizing: border-box; 
+    font-size: 15px; 
+}
+.pay-option { 
+    background: var(--text); 
+    color: var(--invt); 
+    padding: 12px; 
+    border-radius: 10px; 
+    margin: 8px 0; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    cursor: pointer; 
+    font-weight: bold; 
+}
+.pay-option input { 
+    width: auto; 
+    margin: 0; 
+}
+.checkout-btn { 
+    background: var(--lg); 
+    color: var(--invt); 
+    width: 100%; 
+    padding: 15px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    margin-top: 10px; 
+}
 
   /* PAYMENT PROCESS */
-  .payment-box { background: var(--char); border-radius: 15px; padding: 25px 20px; max-width: 600px; margin: 30px auto; }
-  .payment-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 22px; text-align: center; text-transform: uppercase; margin-bottom: 25px; }
-  .step { display: flex; gap: 15px; margin-bottom: 18px; align-items: flex-start; }
-  .number { background: var(--text); color: var(--invt); font-weight: 900; width: 38px; height: 38px; min-width: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-  .step-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px; padding-top: 8px; }
+.payment-box { 
+    background: var(--char); 
+    border-radius: 15px; 
+    padding: 25px 20px; 
+    max-width: 600px; 
+    margin: 30px auto; 
+}
+.payment-title { 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 900; 
+    font-size: 22px; 
+    text-align: center; 
+    text-transform: uppercase; 
+    margin-bottom: 25px; 
+}
+.step { 
+    display: flex;
+    gap: 15px; 
+    margin-bottom: 18px; 
+    align-items: flex-start; 
+}
+.number { 
+    background: var(--text); 
+    color: var(--invt); 
+    font-weight: 900; 
+    width: 38px; 
+    height: 38px; 
+    min-width: 38px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+.step-text { 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 800; 
+    font-size: 15px; 
+    padding-top: 8px; 
+}
  
- .contacts{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:20px;}
-  .contacts a{display:block; text-align:center; padding:12px; background:rgba(255,255,255,0.05); border:1px solid var(--pal); border-radius:12px; color:var(--text); text-decoration:none; font-size:0.9rem;}
-  .contacts a:hover{background:var(--hover); border-color:var(--char); color:white;}
+.contacts {
+    display:grid; 
+    grid-template-columns:repeat(3,1fr); 
+    gap:12px; 
+    margin-top:20px;
+}
+.contacts a {
+    display:block; 
+    text-align:center;
+    padding:12px; 
+    background:rgba(255,255,255,0.05); 
+    border:1px solid var(--pal); 
+    border-radius:12px; 
+    color:var(--text); 
+    text-decoration:none; 
+    font-size:0.9rem;
+}
+.contacts a:hover {
+    background:var(--hover); 
+    border-color:var(--char); 
+    color:white;
+}
  
- @media(max-width:900px){
+@media(max-width:900px){
     .contacts{grid-template-columns:1fr;}
-  }
+ }
