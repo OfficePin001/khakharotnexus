@@ -1,0 +1,224 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing:border-box;
+    font-family:Georgia, serif;
+}
+:root{
+    --bg: #050505;
+    --bar: #A2A1A0;
+    --glass: #D0CDC7;
+    --pal: #BC795A;
+    --char: #242423;
+    --head:#B9A27B;
+    --lg:#CAB187;
+    --text: #FFF;
+    --invt:#000;
+    --hover: #1E00CA;
+}
+/*For the light theme*/
+body.dark {
+    --bg: #FFFFFF;
+    --card: #1E293B;
+    --text: #000;
+    --invt:#fff;
+    --char: #adbdbd;
+    --accent: #2DD4BF;
+    --head: #0D9885;
+    --lg: #7D6D53;
+  } 
+body{
+    background: var(--bg);
+    padding: 3px;
+    margin: 6px;
+    color: var(--text);
+}
+ /*The switch button*/
+.switch { 
+    position: relative; 
+    display: inline-block; 
+    width: 52px; 
+    height: 28px; 
+    flex-shrink: 0; 
+}
+.switch input { 
+    opacity: 0; 
+    width: 0; 
+    height: 0; 
+}
+.slider {
+    position: absolute; 
+    cursor: pointer; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    background: #CBD5E1; 
+    transition: 0.3s; 
+    border-radius: 28px;
+}
+.slider:before {
+    position: absolute; 
+    content: ""; 
+    height: 22px; 
+    width: 22px;
+    left: 3px; 
+    bottom: 3px; 
+    background: white;
+    transition: 0.3s; 
+    border-radius: 50%;
+}
+  /*  move knob + change colour */
+.switch input:checked + .slider {background: var(--accent); }
+.switch input:checked + .slider:before{ transform: translateX(24px); }
+.top-bar{
+    background-color: rgba(162,161,160,0.4);
+    width-max: 100%;
+    height: 64px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 10px 0.8%;
+    border-bottom: 3px solid rgba( 208,205,199,0.8);
+    backdrop-filter:blur(25px);
+    display: flex;
+    justify-content: space-between;
+    text-align:center ;
+}
+.logo{
+    font-weight:700;
+    font-size:24px ;
+    color:var(--lg); 
+} 
+.logo sub{
+    color:var(--head);
+    font-size:16px;
+}
+.nav-links a{
+    color:var(--head); 
+    text-decoration:none; 
+    margin-left:24px; 
+    font-size:0.9rem;
+}
+.nav-links a:hover{
+    color:var(--hover);
+}
+.title{
+    font-weight: 500;
+    font-size: 34px;
+    text-align:center ;
+}
+.cardy{
+    background:var(--char); 
+    border:1px solid var(--pal);
+    color:var(--text); 
+    border-radius:20px; 
+    padding:28px;
+}
+.cady{
+    background:var(--char) transparent; 
+    border:1px solid var(--pal) transparent;
+    border-radius:20px; 
+    padding:28px;
+}
+.container{
+    padding:40px 6%; 
+    max-width:device-width; 
+    margin:0 auto;
+}
+.grid{
+    display:grid; 
+     
+    gap:20px;
+}
+.card{
+    background:var(--char); 
+    border:1px solid var(--pal);
+    border-radius:20px; 
+    padding:28px;
+}
+.card h3{
+    font-size:0.8rem; 
+    text-transform:uppercase; 
+    letter-spacing:0.08em; 
+    color:var(--text); 
+    margin-bottom:12px;
+}
+.card h2{
+    font-size:1.25rem; 
+    color:var(--text); 
+    margin-bottom:12px;
+}
+.card p, .card li{
+    color:var(--text); 
+    font-size:0.95rem;
+}
+.card ul, .card ol{
+    padding-left:18px; 
+    margin-top:12px;
+}
+.card li{
+    margin-bottom:8px;
+    font-weight:900;
+}
+.col-7{
+    grid-column: span 7;
+} 
+.col-5{
+    grid-column: span 5;
+} 
+.col-12{
+    grid-column: span 12;
+}
+.foot-bar{
+    background-color: rgba(162,161,160,0.4);
+    width-max: 100%;
+    height: 64px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 10px 2%;
+    border-top: 3px solid rgba( 208,205,199,0.8);
+    backdrop-filter:blur(25px);
+    display: flex;
+    justify-content: space-between;
+    text-align:center ;
+}
+.btn{
+    font-weight:700;
+    font-size:24px ;
+    color:var(--lg); 
+} 
+.btn sub{
+    color:var(--head);
+    font-size:16px;
+}
+
+
+
+h1 { text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; font-size: 22px; }
+  .product { background: var(--char); padding: 15px; margin-bottom: 10px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; }
+  button { background: var(--lg); color: var(--invt); border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; }
+  #cartBtn { position: relative; bottom: 0px; right: 0px; background: var(--lg); color: var(--invt); padding: 15px 20px; font-size: 16px; z-index: 100; }
+  #cartBox { display: none; background: var(--char); padding: 20px; border-radius: 15px; margin-top: 20px; }
+  input, textarea { background: var(--char); color: var(--invt); width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 15px; }
+  .pay-option { background: var(--text); color: var(--invt); padding: 12px; border-radius: 10px; margin: 8px 0; display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: bold; }
+  .pay-option input { width: auto; margin: 0; }
+  .checkout-btn { background: var(--lg); color: var(--invt); width: 100%; padding: 15px; font-size: 16px; font-weight: bold; margin-top: 10px; }
+
+  /* PAYMENT PROCESS */
+  .payment-box { background: var(--char); border-radius: 15px; padding: 25px 20px; max-width: 600px; margin: 30px auto; }
+  .payment-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 22px; text-align: center; text-transform: uppercase; margin-bottom: 25px; }
+  .step { display: flex; gap: 15px; margin-bottom: 18px; align-items: flex-start; }
+  .number { background: var(--text); color: var(--invt); font-weight: 900; width: 38px; height: 38px; min-width: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .step-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px; padding-top: 8px; }
+ 
+ .contacts{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:20px;}
+  .contacts a{display:block; text-align:center; padding:12px; background:rgba(255,255,255,0.05); border:1px solid var(--pal); border-radius:12px; color:var(--text); text-decoration:none; font-size:0.9rem;}
+  .contacts a:hover{background:var(--hover); border-color:var(--char); color:white;}
+ 
+ @media(max-width:900px){
+    .contacts{grid-template-columns:1fr;}
+  }
